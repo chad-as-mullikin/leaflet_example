@@ -1,0 +1,47 @@
+---
+title: "project_1"
+author: "Chad A.S. Mullikin"
+date: "14/05/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Leaflet Example
+
+Today's date is 14 May, 2017.
+```{r}
+date()
+```
+
+Here is a map with the location of some of the cities I have been to.
+```{r}
+library(leaflet)
+cities_visited <- data.frame( names = c( "Amsterdam", "Atlanta", "Baltimore", 
+                                        "Leeds", "London", "Madrid" ,"Manchester", 
+                                        "Mobile", "New York","Oklahoma City" ),
+                             pop = c(851000, 456002, 622793, 751500, 8674000, 
+                                     3166000, 2550000, 194675, 8491000, 620602),
+                             lat = c(52.3702, 33.7490,39.2904,53.8008,51.5074,
+                                     40.4168, 53.4808, 30.6954, 40.7128, 35.4676),
+                             lng = c(4.8952, -84.3880, -76.6122, -1.5491, -0.1278,
+                                     3.7038, -2.2426, -88.0399, -74.0059, -97.5164)
+                             )
+citiesSites = c("<a href = 'https://en.wikipedia.org/wiki/Amsterdam'>Amsterdam</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Atlanta'>Atlanta</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Baltimore'>Baltimore</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Leeds'>Leeds</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/London'>London</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Madrid'>Madrid</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Manchester'>Manchester</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Mobile,_Alabama'>Mobile</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/New_York_City'>New York</a>",
+                "<a href = 'https://en.wikipedia.org/wiki/Oklahoma_City'>Oklahoma City</a>")
+cities_visited %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircles(weight = 1, radius = sqrt(cities_visited$pop)*30) %>%
+        addMarkers(popup = citiesSites )
+```
