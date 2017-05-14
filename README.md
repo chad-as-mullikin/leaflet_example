@@ -1,2 +1,3 @@
 # leaflet_example
-Showing an illustration of how to use leaflet.
+Please find the sourced html <a href = "https://chad-as-mullikin.github.io/leaflet_example/proj_1.html">here</a>:
+https://chad-as-mullikin.github.io/leaflet_example/proj_1.html
